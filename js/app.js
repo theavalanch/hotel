@@ -172,23 +172,34 @@ class MainApp {
     });
   }
 
+  toggleMobileMenu(forceState = null) {
+    const navDrawer = document.getElementById("mobile-nav-drawer");
+    if (!navDrawer) return;
+    if (forceState !== null) {
+      if (forceState) {
+        navDrawer.classList.add("active");
+        document.body.classList.add("menu-open");
+      } else {
+        navDrawer.classList.remove("active");
+        document.body.classList.remove("menu-open");
+      }
+    } else {
+      navDrawer.classList.toggle("active");
+      document.body.classList.toggle("menu-open");
+    }
+  }
+
   bindMobileMenu() {
     const hamburger = document.getElementById("mobile-menu-toggle");
-    const navDrawer = document.getElementById("mobile-nav-drawer");
     const closeBtn = document.getElementById("mobile-menu-close");
 
-    const toggleMenu = () => {
-      navDrawer?.classList.toggle("active");
-      document.body.classList.toggle("menu-open");
-    };
-
-    hamburger?.addEventListener("click", toggleMenu);
-    closeBtn?.addEventListener("click", toggleMenu);
+    hamburger?.addEventListener("click", () => this.toggleMobileMenu());
+    closeBtn?.addEventListener("click", () => this.toggleMobileMenu(false));
 
     document.querySelectorAll(".mobile-nav-link").forEach(link => {
       link.addEventListener("click", () => {
         const target = link.getAttribute("data-view");
-        toggleMenu();
+        this.toggleMobileMenu(false);
         if (target) this.switchView(target);
       });
     });

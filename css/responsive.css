@@ -1,24 +1,58 @@
 /* ==========================================================================
-   DoubleTree by Hilton Hotel Los Angeles Downtown - Responsive Adaptations
-   Mobile Drawers, Responsive Grids, Touch Targets & Small Screen Layouts
+   DoubleTree by Hilton Hotel Los Angeles Downtown - Master Responsive Styles
+   Full Mobile Optimization: Phones (320px - 480px), Tablets (481px - 768px),
+   Laptops (769px - 1024px), Touch Targets, Modals, Forms & Admin Dashboard
    ========================================================================== */
 
-/* Mobile Nav Drawer */
+/* -------------------------------------------------------------
+ * 1. Global Viewport & Mobile Reset
+ * ------------------------------------------------------------- */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure inputs on mobile have 16px font-size to prevent iOS Safari auto-zoom */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* -------------------------------------------------------------
+ * 2. Mobile Navigation Drawer
+ * ------------------------------------------------------------- */
 #mobile-nav-drawer {
   position: fixed;
   top: 0;
   right: -100%;
   width: 320px;
-  max-width: 85vw;
+  max-width: 88vw;
   height: 100vh;
-  background: var(--bg-surface);
-  border-left: 1px solid var(--gold-border);
+  background: var(--bg-surface, #0e1626);
+  border-left: 1px solid var(--gold-border, rgba(212, 175, 55, 0.3));
   z-index: 10001;
-  padding: 32px 24px;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
   transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.85);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 #mobile-nav-drawer.active {
@@ -29,7 +63,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -37,34 +71,38 @@
 .mobile-nav-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   flex-grow: 1;
 }
 
 .mobile-nav-link {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--text-secondary);
-  transition: color var(--transition-fast);
+  color: var(--text-secondary, #cbd5e1);
+  transition: color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 8px 0;
+  text-decoration: none;
 }
 
-.mobile-nav-link:hover {
-  color: var(--gold-primary);
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  color: var(--gold-primary, #d4af37);
 }
 
 .mobile-nav-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 24px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   3. Large Tablets & Small Laptops (<= 1200px)
    ========================================================================== */
-
-/* Large Tablets & Small Laptops (<= 1200px) */
 @media (max-width: 1200px) {
   .fast-booking-bar {
     grid-template-columns: repeat(3, 1fr);
@@ -80,32 +118,34 @@
   }
 }
 
-/* Tablets (<= 992px) */
+/* ==========================================================================
+   4. Tablets & Small Desktops (<= 992px)
+   ========================================================================== */
 @media (max-width: 992px) {
   .hero-title {
-    font-size: 3.2rem;
+    font-size: 3rem;
   }
   .main-nav {
-    display: none;
+    display: none !important;
   }
   .mobile-menu-btn {
-    display: flex;
+    display: flex !important;
   }
   .grid-two-cols,
   .dining-experience-banner,
   .ratings-summary-banner,
   .auth-grid-two {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   .facilities-grid,
   .offers-grid,
   .gallery-masonry,
   .dishes-grid,
   .reviews-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
   .room-list-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   .room-list-media {
     min-height: 240px;
@@ -121,28 +161,157 @@
     width: 220px;
   }
   .hk-kanban-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 }
 
-/* Mobile Devices (<= 768px) */
+/* ==========================================================================
+   5. Mobile Phones & Phablets (<= 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
+  /* Header Mobile Optimization */
   .site-header {
-    height: 72px;
+    height: 68px !important;
   }
+  
+  .header-container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .brand-logo {
+    gap: 10px;
+  }
+
+  .brand-crest {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+  }
+
+  .brand-tag {
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+  }
+
+  .header-actions {
+    gap: 8px !important;
+  }
+
+  /* Hide desktop currency dropdown on phones to prevent header crowding */
+  .currency-picker {
+    display: none !important;
+  }
+
+  /* Compact User Auth button on mobile header */
+  #btn-user-auth {
+    padding: 6px 10px !important;
+    font-size: 0.8rem !important;
+    white-space: nowrap;
+    border-radius: 6px;
+  }
+
+  #btn-user-auth span {
+    max-width: 105px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  /* Compact Book Now button on mobile header */
+  .site-header .btn-gold.btn-sm {
+    display: none !important; /* Accessible through mobile drawer, sticky bar & hero */
+  }
+
+  /* Admin switcher compact icon on mobile */
+  .admin-switch-badge {
+    padding: 6px 8px !important;
+  }
+  .admin-switch-badge span:last-child {
+    display: none !important;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 90px 0 60px 0 !important;
+  }
+
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem !important;
+    line-height: 1.15;
   }
+
   .hero-subtitle {
-    font-size: 1.05rem;
+    font-size: 0.98rem !important;
+    margin-bottom: 24px;
   }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero-actions .btn {
+    width: 100% !important;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Hero Fast Booking Bar Mobile Stack */
   .fast-booking-bar {
-    grid-template-columns: 1fr;
-    padding: 18px;
+    grid-template-columns: 1fr !important;
+    padding: 16px !important;
+    gap: 12px !important;
+    border-radius: 12px;
   }
+
   .bar-btn-col {
-    grid-column: span 1;
+    grid-column: span 1 !important;
+    margin-top: 4px;
   }
+
+  .bar-btn-col .btn {
+    width: 100% !important;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  /* Subgrid for adults, children, rooms on mobile */
+  .bar-party-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  /* Sections & Containers */
+  .site-section {
+    padding: 50px 0 !important;
+  }
+
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .section-title {
+    font-size: 1.85rem !important;
+    line-height: 1.2;
+  }
+
+  .section-subtitle {
+    font-size: 0.88rem !important;
+    margin-bottom: 24px;
+  }
+
+  /* Grids to Single Column on Mobile */
   .facilities-grid,
   .offers-grid,
   .gallery-masonry,
@@ -153,108 +322,415 @@
   .room-rack-grid,
   .form-grid.two-cols,
   .form-grid.three-cols {
-    grid-template-columns: 1fr;
-  }
-  .section-title {
-    font-size: 2.1rem;
-  }
-  .site-section {
-    padding: 60px 0;
-  }
-  .suite-select-card {
-    grid-template-columns: 1fr;
-  }
-  .suite-select-thumb {
-    height: 180px;
-  }
-  .modal-body {
-    padding: 20px;
-  }
-  .step-indicators-bar {
-    overflow-x: auto;
-    padding: 12px 16px;
-  }
-  .step-label {
-    display: none;
-  }
-  .conf-grid {
-    grid-template-columns: 1fr;
-  }
-  .conf-ref-id {
-    font-size: 1.8rem;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
   }
 
-  /* Admin mobile adjustments */
-  #admin-portal-view {
-    flex-direction: column;
+  .ratings-summary-banner {
+    padding: 20px 16px !important;
   }
-  .admin-sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-  }
-  .admin-sidebar-nav {
-    flex-direction: row;
+
+  .dining-menu-tabs {
     overflow-x: auto;
-    padding: 10px;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
   }
-  .admin-sidebar-nav .nav-item {
-    white-space: nowrap;
-    border-left: none !important;
-    border-bottom: 2px solid transparent;
+
+  .room-filters-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
+    gap: 6px;
   }
-  .admin-sidebar-nav .nav-item.active {
-    border-bottom-color: var(--gold-primary);
+
+  .filter-pill {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    font-size: 0.82rem;
   }
-  .admin-content-pad {
-    padding: 20px;
-  }
-  .admin-topbar-row {
+
+  /* -------------------------------------------------------------
+   * Modals on Mobile Devices (Booking Engine, User Auth, Admin)
+   * ------------------------------------------------------------- */
+  .modal-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    margin: 12px auto !important;
+    max-height: 92vh !important;
+    border-radius: 12px !important;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+  }
+
+  .modal-header {
+    padding: 14px 16px !important;
+    flex-shrink: 0;
+  }
+
+  .modal-header h3,
+  .modal-header h4 {
+    font-size: 1.15rem !important;
+  }
+
+  .modal-close {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .modal-body {
+    padding: 16px 14px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex: 1 1 auto;
+  }
+
+  /* Booking Step Indicators Bar on Mobile */
+  .step-indicators-bar {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 10px !important;
+    gap: 6px !important;
+    justify-content: space-between !important;
+  }
+
+  .step-indicator {
+    padding: 4px 6px !important;
+    gap: 4px !important;
+  }
+
+  .step-num {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 0.78rem !important;
+  }
+
+  .step-label {
+    display: none !important;
+  }
+
+  /* Suite Selection Card on Mobile */
+  .suite-select-card {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .suite-select-thumb {
+    height: 160px !important;
+    width: 100% !important;
+  }
+
+  .suite-select-body {
+    padding: 0 4px;
+  }
+
+  .suite-select-pricing {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Confirmation Screen & Payment Procedure Card on Mobile */
+  .conf-grid {
+    grid-template-columns: 1fr !important;
     gap: 16px;
   }
-  .admin-filter-bar {
-    flex-direction: column;
-    align-items: stretch;
+
+  .conf-ref-id {
+    font-size: 1.6rem !important;
   }
-  .search-box {
+
+  .conf-email-buttons-row {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .conf-email-buttons-row .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 14px !important;
+  }
+
+  /* User Auth Modal Mobile */
+  .auth-modal-nav-tabs {
+    display: flex;
+    width: 100%;
+    gap: 4px;
+  }
+
+  .auth-tab-btn {
+    flex: 1;
+    text-align: center;
+    padding: 8px 6px !important;
+    font-size: 0.8rem !important;
+    white-space: nowrap;
+  }
+
+  .user-profile-header-card {
+    padding: 1rem !important;
+  }
+
+  /* -------------------------------------------------------------
+   * Admin Operations Portal on Mobile Devices
+   * ------------------------------------------------------------- */
+  #admin-portal-view {
+    flex-direction: column !important;
+  }
+
+  .admin-sidebar {
+    width: 100% !important;
+    height: auto !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 999;
+    border-right: none !important;
+    border-bottom: 1px solid var(--gold-border) !important;
+    background: var(--bg-surface) !important;
+  }
+
+  .admin-sidebar-header {
+    padding: 12px 16px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .admin-sidebar-nav {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap !important;
+    padding: 6px 12px 10px 12px !important;
+    gap: 6px;
+  }
+
+  .admin-sidebar-nav .nav-item {
+    border-left: none !important;
+    border-bottom: 2px solid transparent !important;
+    padding: 6px 12px !important;
+    font-size: 0.82rem !important;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .admin-sidebar-nav .nav-item.active {
+    border-bottom-color: var(--gold-primary) !important;
+    background: rgba(212, 175, 55, 0.15) !important;
+    color: var(--gold-primary) !important;
+  }
+
+  .admin-sidebar-footer {
+    display: none !important; /* Moved to top bar on mobile */
+  }
+
+  .admin-content-pad {
+    padding: 14px !important;
+  }
+
+  .admin-topbar-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .admin-topbar-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
     width: 100%;
   }
+
+  .admin-topbar-actions .btn {
+    flex: 1 1 auto;
+    font-size: 0.82rem;
+    padding: 8px 10px;
+    justify-content: center;
+  }
+
+  .admin-filter-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px;
+  }
+
+  .search-box {
+    width: 100% !important;
+  }
+
   .filter-pills {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     padding-bottom: 6px;
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  /* Table Horizontal Scrolling on Mobile */
+  .table-responsive,
+  .table-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .data-table {
+    min-width: 600px; /* Ensures table columns don't crunch together */
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 10px 12px !important;
+    font-size: 0.84rem !important;
+  }
+
+  /* Action buttons inside table cells */
+  .table-actions-cell {
+    white-space: nowrap !important;
+    display: flex;
+    gap: 6px;
   }
 }
 
-/* Small Phones (<= 480px) */
+/* ==========================================================================
+   6. Extra-Small Mobile Phones (<= 480px)
+   ========================================================================== */
 @media (max-width: 480px) {
+  .site-header {
+    height: 62px !important;
+  }
+
   .brand-name {
-    font-size: 0.95rem;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.05em;
   }
+
+  .brand-crest {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.9rem !important;
+  }
+
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.85rem !important;
   }
-  .btn-large {
-    padding: 14px 24px;
-    font-size: 0.95rem;
+
+  .section-title {
+    font-size: 1.6rem !important;
   }
-  .btn-gold, .btn-primary, .btn-secondary {
-    width: 100%;
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.88rem;
   }
-  .admin-switch-badge span:last-child {
-    display: none;
-  }
+
+  /* Floating WhatsApp icon position on small phones */
   #floating-whatsapp-btn {
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
+    bottom: 16px !important;
+    right: 16px !important;
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 1.35rem !important;
   }
+
   #whatsapp-quick-popup {
-    right: 14px;
-    left: 14px;
-    width: auto;
+    right: 12px !important;
+    left: 12px !important;
+    width: auto !important;
+    bottom: 70px !important;
+    padding: 16px !important;
+  }
+
+  /* Toast alerts on mobile */
+  #toast-container {
+    bottom: 74px !important;
+    right: 14px !important;
+    left: 14px !important;
+    max-width: 100% !important;
+  }
+
+  .toast-pill {
+    max-width: 100% !important;
+    padding: 12px 14px !important;
+    font-size: 0.85rem !important;
   }
 }
+
+/* ==========================================================================
+   7. Mobile Bottom Action Bar (Luxury Sticky Bottom Bar <= 768px)
+   ========================================================================== */
+.mobile-bottom-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 64px !important;
+  }
+
+  .mobile-bottom-bar {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(11, 19, 37, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(212, 175, 55, 0.35);
+    z-index: 9998;
+    align-items: center;
+    justify-content: space-around;
+    padding: 4px 6px;
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.7);
+  }
+
+  .mobile-bar-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary, #cbd5e1);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    flex: 1;
+    min-height: 48px;
+  }
+
+  .mobile-bar-btn:active,
+  .mobile-bar-btn:hover {
+    color: var(--gold-primary, #d4af37);
+  }
+
+  .mobile-bar-icon {
+    font-size: 1.25rem;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+
+  #floating-whatsapp-btn {
+    bottom: 74px !important;
+  }
+
+  #whatsapp-quick-popup {
+    bottom: 130px !important;
+  }
+}
+

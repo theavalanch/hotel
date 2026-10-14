@@ -104,9 +104,19 @@
         <a href="#reviews" class="mobile-nav-link" data-view="reviews">Guest Reviews <span>→</span></a>
         <a href="#contact" class="mobile-nav-link" data-view="contact">Contact & Location (USA) <span>→</span></a>
         <a href="javascript:void(0)" class="mobile-nav-link" onclick="window.app.openUserAuthModal(); window.app.toggleMobileMenu(false);"><span id="mobile-user-auth-label">👤 Sign In / Join Hilton Honors</span> <span>→</span></a>
+        <div class="mobile-drawer-currency" style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);">
+          <label style="font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-primary); display: block; margin-bottom: 6px;">Select Currency</label>
+          <select id="mobile-currency-select" class="form-select" style="padding: 10px 12px; font-size: 0.88rem; width: 100%;" onchange="window.hotelState.setCurrency(this.value)">
+            <option value="USD" selected>USD ($) - US Dollar</option>
+            <option value="EUR">EUR (€) - Euro</option>
+            <option value="GBP">GBP (£) - British Pound</option>
+            <option value="CAD">CAD (CA$) - Canadian Dollar</option>
+          </select>
+        </div>
       </div>
       <div class="mobile-nav-footer">
-        <button type="button" class="btn btn-gold btn-block" onclick="window.bookingEngine.openBookingModal()">Reserve a Room</button>
+        <button type="button" class="btn btn-gold btn-block" onclick="window.bookingEngine.openBookingModal(); window.app.toggleMobileMenu(false);">Reserve a Suite</button>
+        <button type="button" class="btn btn-secondary btn-block mt-2" onclick="window.app.switchView('admin'); window.app.toggleMobileMenu(false);">⚙️ Admin Operations Portal</button>
       </div>
     </div>
 
@@ -1061,6 +1071,26 @@
       window.openGenericModal(html);
     };
   </script>
+
+  <!-- Luxury Mobile Bottom Action Bar (Sticky on Mobile Phones <= 768px) -->
+  <nav class="mobile-bottom-bar" aria-label="Mobile Quick Actions">
+    <button type="button" class="mobile-bar-btn" onclick="window.bookingEngine.openBookingModal()">
+      <span class="mobile-bar-icon">🛎️</span>
+      <span class="mobile-bar-text">Book Stay</span>
+    </button>
+    <button type="button" class="mobile-bar-btn" onclick="window.app.openUserAuthModal()">
+      <span class="mobile-bar-icon">👤</span>
+      <span class="mobile-bar-text">Honors</span>
+    </button>
+    <a class="mobile-bar-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=doubletreehotel49@gmail.com&su=DoubleTree%20Los%20Angeles%20Downtown%20Payment%20Inquiry" target="_blank">
+      <span class="mobile-bar-icon">✉️</span>
+      <span class="mobile-bar-text">Manager</span>
+    </a>
+    <button type="button" class="mobile-bar-btn" onclick="window.app.toggleMobileMenu()">
+      <span class="mobile-bar-icon">☰</span>
+      <span class="mobile-bar-text">Menu</span>
+    </button>
+  </nav>
 
   <!-- Application Logic Scripts -->
   <script src="js/data.js"></script>
