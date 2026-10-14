@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOUBLETREE BY HILTON HOTEL IN LOS ANGELES DOWNTOWN | Official Hotel Site</title>
+  <meta name="description" content="Stay at DoubleTree by Hilton Hotel in Los Angeles Downtown, California, USA. Featuring warm chocolate chip cookies on arrival, rooftop Kyoto Japanese Gardens, Justice Urban Tavern, and a prime DTLA location.">
+  <meta name="keywords" content="DoubleTree by Hilton Hotel in Los Angeles Downtown, DTLA hotel, Los Angeles hotels, Little Tokyo hotel, Kyoto Gardens, California hotel, USA hotel, Hilton Downtown LA">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DOUBLETREE BY HILTON HOTEL IN LOS ANGELES DOWNTOWN">
+  <meta property="og:description" content="Warm chocolate chip cookie welcome, scenic rooftop Kyoto Japanese Gardens, and vibrant Little Tokyo in Downtown Los Angeles, California, USA.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       CUSTOMER WEBSITE VIEW
+       ========================================================================= -->
+  <div id="customer-site-view">
+    
+    <!-- Header & Navigation Bar -->
+    <header class="site-header">
+      <div class="container header-container">
+        <a href="#home" class="brand-logo" data-nav-target="home">
+          <div class="brand-crest">DT</div>
+          <div class="brand-text">
+            <span class="brand-name">DOUBLETREE BY HILTON</span>
+            <span class="brand-tag">LOS ANGELES DOWNTOWN</span>
+          </div>
+        </a>
+
+        <nav class="main-nav">
+          <a href="#home" class="nav-link active" data-nav-target="home">Home</a>
+          <a href="#rooms" class="nav-link" data-nav-target="rooms">Suites & Rooms</a>
+          <a href="#facilities" class="nav-link" data-nav-target="facilities">Kyoto Gardens & Amenities</a>
+          <a href="#dining" class="nav-link" data-nav-target="dining">Dining</a>
+          <a href="#gallery" class="nav-link" data-nav-target="gallery">Gallery</a>
+          <a href="#offers" class="nav-link" data-nav-target="offers">Offers</a>
+          <a href="#reviews" class="nav-link" data-nav-target="reviews">Reviews</a>
+          <a href="#contact" class="nav-link" data-nav-target="contact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <!-- Currency Picker -->
+          <div class="currency-picker">
+            <select id="currency-select" title="Select Currency">
+              <option value="USD" selected>USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="CAD">CAD (CA$)</option>
+            </select>
+          </div>
+
+          <!-- Account / My Bookings -->
+          <button type="button" class="btn btn-secondary btn-sm" data-nav-target="account">
+            <span>👤 Honors / My Stays</span>
+          </button>
+
+          <!-- Book Now CTA -->
+          <button type="button" class="btn btn-gold btn-sm" onclick="window.bookingEngine.openBookingModal()">
+            <span>Book Now</span>
+          </button>
+
+          <!-- Admin Portal Switch Badge -->
+          <button type="button" id="btn-switch-admin" class="admin-switch-badge" title="Open Hotel Management Admin Portal">
+            <span>⚙️</span>
+            <span>Admin Portal</span>
+          </button>
+
+          <!-- Mobile Hamburger -->
+          <button type="button" id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Open Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav-drawer">
+      <div class="mobile-nav-header">
+        <div class="brand-text">
+          <span class="brand-name">DOUBLETREE BY HILTON</span>
+          <span class="brand-tag">LOS ANGELES DOWNTOWN</span>
+        </div>
+        <button type="button" id="mobile-menu-close" class="modal-close">✕</button>
+      </div>
+      <div class="mobile-nav-list">
+        <a href="#home" class="mobile-nav-link" data-view="home">Home <span>→</span></a>
+        <a href="#rooms" class="mobile-nav-link" data-view="rooms">Suites & Rooms <span>→</span></a>
+        <a href="#facilities" class="mobile-nav-link" data-view="facilities">Kyoto Gardens & Amenities <span>→</span></a>
+        <a href="#dining" class="mobile-nav-link" data-view="dining">Justice Urban Tavern <span>→</span></a>
+        <a href="#gallery" class="mobile-nav-link" data-view="gallery">Visual Gallery <span>→</span></a>
+        <a href="#offers" class="mobile-nav-link" data-view="offers">Special Offers <span>→</span></a>
+        <a href="#reviews" class="mobile-nav-link" data-view="reviews">Guest Reviews <span>→</span></a>
+        <a href="#contact" class="mobile-nav-link" data-view="contact">Contact & Location (USA) <span>→</span></a>
+        <a href="#account" class="mobile-nav-link" data-view="account">My Stays / Account <span>→</span></a>
+      </div>
+      <div class="mobile-nav-footer">
+        <button type="button" class="btn btn-gold btn-block" onclick="window.bookingEngine.openBookingModal()">Reserve a Room</button>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="section-home" class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-stars-ribbon animate-fade-in">
+          <span class="stars">★★★★☆</span>
+          <span class="ribbon-text">Warm Cookie Welcome • DTLA, California</span>
+        </div>
+
+        <h1 class="hero-title animate-fade-in">
+          DOUBLETREE BY HILTON
+          <span>HOTEL IN LOS ANGELES DOWNTOWN</span>
+        </h1>
+
+        <p class="hero-subtitle animate-fade-in">
+          Experience our signature warm chocolate chip cookie welcome, scenic rooftop Kyoto Japanese Gardens, and vibrant Little Tokyo right in the heart of Downtown Los Angeles, California, USA.
+        </p>
+
+        <!-- Fast Booking Bar (Search Availability) -->
+        <div class="fast-booking-bar animate-scale-up">
+          <div class="bar-field">
+            <label class="bar-label" for="hero-checkin">Check-in Date</label>
+            <input type="date" id="hero-checkin">
+          </div>
+
+          <div class="bar-field">
+            <label class="bar-label" for="hero-checkout">Check-out Date</label>
+            <input type="date" id="hero-checkout">
+          </div>
+
+          <div class="bar-field">
+            <label class="bar-label" for="hero-adults">Adults</label>
+            <select id="hero-adults">
+              <option value="1">1 Adult</option>
+              <option value="2" selected>2 Adults</option>
+              <option value="3">3 Adults</option>
+              <option value="4">4 Adults</option>
+              <option value="5">5+ Adults</option>
+            </select>
+          </div>
+
+          <div class="bar-field">
+            <label class="bar-label" for="hero-children">Children</label>
+            <select id="hero-children">
+              <option value="0" selected>0 Children</option>
+              <option value="1">1 Child</option>
+              <option value="2">2 Children</option>
+              <option value="3">3+ Children</option>
+            </select>
+          </div>
+
+          <div class="bar-field">
+            <label class="bar-label" for="hero-rooms">Rooms</label>
+            <select id="hero-rooms">
+              <option value="1" selected>1 Room</option>
+              <option value="2">2 Rooms</option>
+              <option value="3">3 Rooms</option>
+            </select>
+          </div>
+
+          <div class="bar-field bar-btn-col">
+            <button type="button" id="hero-btn-search" class="btn btn-gold">
+              <span>Search Availability</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guarantees Strip -->
+    <div class="guarantees-strip">
+      <div class="container guarantees-flex">
+        <div class="guarantee-item">
+          <span class="guarantee-icon">🛡️</span>
+          <div class="guarantee-text">
+            <strong>Best Rate Direct Guarantee</strong>
+            <span>Complimentary room upgrades when available</span>
+          </div>
+        </div>
+
+        <div class="guarantee-item">
+          <span class="guarantee-icon">📶</span>
+          <div class="guarantee-text">
+            <strong>Ultra High-Speed Mesh Wi-Fi</strong>
+            <span>Dedicated gigabit fiber connection in all suites</span>
+          </div>
+        </div>
+
+        <div class="guarantee-item">
+          <span class="guarantee-icon">✨</span>
+          <div class="guarantee-text">
+            <strong>Free 48h Cancellation</strong>
+            <span>Flexible travel plans with zero penalty fees</span>
+          </div>
+        </div>
+
+        <div class="guarantee-item">
+          <span class="guarantee-icon">🛎️</span>
+          <div class="guarantee-text">
+            <strong>24/7 Royal Butler Service</strong>
+            <span>Uncompromising bespoke hospitality around the clock</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Rooms Section -->
+    <section class="site-section">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <span class="section-tag">Sanctuary of Refinement</span>
+            <h2 class="section-title">Featured Suites & <span>Residences</span></h2>
+            <p class="section-subtitle text-left">
+              Each residence has been meticulously appointed with handcrafted Italian marble, custom acoustic engineering, and breathtaking views.
+            </p>
+          </div>
+          <button type="button" class="btn btn-outline" onclick="window.app.switchView('rooms')">
+            Explore All Suites →
+          </button>
+        </div>
+
+        <div id="featured-rooms-grid" class="grid-three-cols">
+          <!-- Populated by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- All Rooms & Suites Catalog Section -->
+    <section id="section-rooms" class="site-section section-alt">
+      <div class="container">
+        <div class="text-center mb-4">
+          <span class="section-tag">Explore Accommodations</span>
+          <h2 class="section-title">Our Complete <span>Room Collection</span></h2>
+          <p class="section-subtitle">
+            Find the perfect haven for your bespoke staycation, romantic honeymoon, or executive summit.
+          </p>
+        </div>
+
+        <!-- Filter & Sorting Bar -->
+        <div class="rooms-filter-container">
+          <div class="filter-categories-pills">
+            <button type="button" class="category-filter-btn active" data-category="ALL" onclick="window.app.setRoomCategoryFilter('ALL')">All Suites</button>
+            <button type="button" class="category-filter-btn" data-category="DELUXE" onclick="window.app.setRoomCategoryFilter('DELUXE')">Deluxe</button>
+            <button type="button" class="category-filter-btn" data-category="PRESIDENTIAL" onclick="window.app.setRoomCategoryFilter('PRESIDENTIAL')">Presidential</button>
+            <button type="button" class="category-filter-btn" data-category="EXECUTIVE" onclick="window.app.setRoomCategoryFilter('EXECUTIVE')">Executive Club</button>
+            <button type="button" class="category-filter-btn" data-category="JUNIOR" onclick="window.app.setRoomCategoryFilter('JUNIOR')">Junior Suite</button>
+            <button type="button" class="category-filter-btn" data-category="FAMILY" onclick="window.app.setRoomCategoryFilter('FAMILY')">Family Residence</button>
+            <button type="button" class="category-filter-btn" data-category="STANDARD" onclick="window.app.setRoomCategoryFilter('STANDARD')">Classic Standard</button>
+          </div>
+
+          <div class="filter-right-tools">
+            <span id="rooms-matched-count" class="text-gold font-weight-bold">6 Suites Available</span>
+            <div class="sort-select-box">
+              <label for="room-sort-select">Sort by:</label>
+              <select id="room-sort-select" onchange="window.app.setRoomSort(this.value)">
+                <option value="default">Featured / Recommended</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="capacity">Guest Capacity</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rooms List -->
+        <div id="all-rooms-grid">
+          <!-- Populated by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Hotel Facilities & Royal Services -->
+    <section id="section-facilities" class="site-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="section-tag">Unrivaled Indulgence</span>
+          <h2 class="section-title">Hotel Amenities & <span>Sanctuaries</span></h2>
+          <p class="section-subtitle">
+            From our tranquil half-acre rooftop Kyoto Gardens to Justice Urban Tavern and modern Precor fitness, enjoy refined comfort in Downtown LA.
+          </p>
+        </div>
+
+        <div class="facilities-grid">
+          <div class="facility-card">
+            <div class="facility-media">
+              <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80" alt="Kyoto Japanese Garden" loading="lazy">
+              <span class="facility-hours-tag">06:00 AM - 10:00 PM</span>
+            </div>
+            <div class="facility-body">
+              <span class="facility-cat">Signature Sanctuary</span>
+              <h3 class="facility-title">Half-Acre Rooftop Kyoto Japanese Garden</h3>
+              <p class="facility-desc">An authentic rooftop Japanese oasis featuring cascading waterfalls, serene koi ponds, bonsai greenery, and scenic views of the DTLA skyline.</p>
+              <ul class="facility-features-list">
+                <li>Cascading Multi-Tier Waterfalls & Koi Ponds</li>
+                <li>Stone Footbridges & Evening Lantern Illumination</li>
+                <li>Wedding & Private Reception Pavilion</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="facility-card">
+            <div class="facility-media">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Justice Urban Tavern" loading="lazy">
+              <span class="facility-hours-tag">06:30 AM - 11:00 PM</span>
+            </div>
+            <div class="facility-body">
+              <span class="facility-cat">Gastronomy & Craft Bar</span>
+              <h3 class="facility-title">Justice Urban Tavern & Craft Beer Bar</h3>
+              <p class="facility-desc">An upscale American gastropub celebrating California craft brews, artisanal flatbreads, prime steaks, and our famous warm skillet cookie sundae.</p>
+              <ul class="facility-features-list">
+                <li>Local Los Angeles Craft Beers on Tap</li>
+                <li>Outdoor Kyoto Garden Patio Seating</li>
+                <li>Daily Breakfast Buffet & Evening Social</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="facility-card">
+            <div class="facility-media">
+              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Fitness Pavilion" loading="lazy">
+              <span class="facility-hours-tag">24 Hours / 7 Days</span>
+            </div>
+            <div class="facility-body">
+              <span class="facility-cat">Athletics & Vitality</span>
+              <h3 class="facility-title">Precor 24/7 Modern Fitness Center</h3>
+              <p class="facility-desc">High-performance Precor treadmills, ellipticals with personal TV screens, free weights, Peloton bikes, and core strength stations.</p>
+              <ul class="facility-features-list">
+                <li>24/7 Keycard Guest Access</li>
+                <li>Complimentary Chilled Towels & Water</li>
+                <li>Cardio Machines with DTLA Skyline Views</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="facility-card">
+            <div class="facility-media">
+              <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Golden State Ballroom" loading="lazy">
+              <span class="facility-hours-tag">By Reservation</span>
+            </div>
+            <div class="facility-body">
+              <span class="facility-cat">Events & Conferences</span>
+              <h3 class="facility-title">Golden State Ballroom & Meeting Center</h3>
+              <p class="facility-desc">Versatile conference facilities and an elegant grand ballroom accommodating up to 450 guests for conventions, galas, and DTLA summits.</p>
+              <ul class="facility-features-list">
+                <li>Capacity for up to 450 Guests</li>
+                <li>Hybrid High-Definition AV & Webcasting</li>
+                <li>Full Banquet Catering by Justice Tavern Culinary Team</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="facility-card">
+            <div class="facility-media">
+              <img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=800&q=80" alt="Valet Parking & EV Charging" loading="lazy">
+              <span class="facility-hours-tag">24/7 On Demand</span>
+            </div>
+            <div class="facility-body">
+              <span class="facility-cat">Guest Transit</span>
+              <h3 class="facility-title">Valet Parking & EV Charging Hub</h3>
+              <p class="facility-desc">Secure covered multi-level parking with round-the-clock professional valet attendants and high-speed Level 2 & Tesla EV charging stations.</p>
+              <ul class="facility-features-list">
+                <li>Dedicated EV & Tesla Charging Bays</li>
+                <li>In-and-Out Valet Parking Privileges</li>
+                <li>Minutes from LAX Shuttle & Union Station Transit</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="facility-card">
+            <div class="facility-media">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Hilton Honors Lounge" loading="lazy">
+              <span class="facility-hours-tag">06:30 AM - 10:00 PM</span>
+            </div>
+            <div class="facility-body">
+              <span class="facility-cat">Member Privileges</span>
+              <h3 class="facility-title">Hilton Honors Executive Lounge</h3>
+              <p class="facility-desc">Exclusive private retreat for Diamond, Gold, and Executive Floor guests featuring complimentary continental breakfast and evening hors d'oeuvres.</p>
+              <ul class="facility-features-list">
+                <li>Complimentary Gourmet Morning Breakfast</li>
+                <li>Evening Wine & Hors d'Oeuvres Reception</li>
+                <li>High-Speed Wireless Printing & Business Desks</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fine Dining & Restaurant Section -->
+    <section id="section-dining" class="site-section section-alt">
+      <div class="container">
+        <!-- Dining Experience Banner -->
+        <div class="dining-experience-banner">
+          <div>
+            <span class="michelin-badge">✦ Craft Beers & California Bistro</span>
+            <h2 class="section-title">Justice <span>Urban Tavern</span></h2>
+            <p class="lead-text" style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem; line-height: 1.7;">
+              A vibrant culinary tribute to Downtown Los Angeles featuring locally crafted California beers on tap, artisanal flatbreads, prime Angus burgers, and fresh local farm-to-table specialties.
+            </p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+              <button type="button" class="btn btn-gold" onclick="window.app.openTableReservationModal()">
+                <span>Reserve a Dining Table</span>
+                <span>→</span>
+              </button>
+              <a href="#dining-menu-grid" class="btn btn-secondary">Explore Menu Below</a>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div style="background: rgba(7, 11, 20, 0.9); border: 1px solid var(--gold-border); padding: 24px; border-radius: var(--radius-md); display: inline-block; text-align: left;">
+              <h4 style="color: var(--gold-primary); margin-bottom: 8px;">Hours of Service</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+                <strong>Breakfast:</strong> 06:30 AM - 11:00 AM<br>
+                <strong>Lunch & Dinner:</strong> 11:30 AM - 11:00 PM<br>
+                <strong>Rendezvous Lounge:</strong> 04:00 PM - 12:00 AM<br>
+                <strong>In-Room Dining:</strong> Available Daily
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Tabs -->
+        <div class="text-center mb-4">
+          <span class="section-tag">A Culinary Journey</span>
+          <h3 class="section-title">Justice Tavern <span>Seasonal Menu</span></h3>
+        </div>
+
+        <div class="dining-tabs-nav">
+          <button type="button" class="dining-nav-tab" data-tab="breakfast" onclick="window.app.setDiningTab('breakfast')">Breakfast</button>
+          <button type="button" class="dining-nav-tab" data-tab="lunch" onclick="window.app.setDiningTab('lunch')">Lunch</button>
+          <button type="button" class="dining-nav-tab active" data-tab="dinner" onclick="window.app.setDiningTab('dinner')">Dinner</button>
+          <button type="button" class="dining-nav-tab" data-tab="cocktails" onclick="window.app.setDiningTab('cocktails')">Signature Cocktails</button>
+        </div>
+
+        <div id="dining-menu-grid" class="dishes-grid">
+          <!-- Populated by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Gallery Section -->
+    <section id="section-gallery" class="site-section">
+      <div class="container">
+        <div class="text-center mb-4">
+          <span class="section-tag">Captivating Perspectives</span>
+          <h2 class="section-title">Hotel & Rooftop <span>Gallery</span></h2>
+          <p class="section-subtitle">
+            Discover our peaceful rooftop Kyoto Gardens, modern DTLA skyline suites, and inviting social spaces.
+          </p>
+        </div>
+
+        <!-- Gallery Filter Bar -->
+        <div class="gallery-filter-bar">
+          <button type="button" class="gallery-filter-btn active" data-category="ALL" onclick="window.app.setGalleryCategory('ALL')">All Photographs</button>
+          <button type="button" class="gallery-filter-btn" data-category="ROOMS" onclick="window.app.setGalleryCategory('ROOMS')">Suites & Penthouses</button>
+          <button type="button" class="gallery-filter-btn" data-category="POOL" onclick="window.app.setGalleryCategory('POOL')">Pool & Spa</button>
+          <button type="button" class="gallery-filter-btn" data-category="DINING" onclick="window.app.setGalleryCategory('DINING')">Gastronomy & Wine</button>
+          <button type="button" class="gallery-filter-btn" data-category="ARCHITECTURE" onclick="window.app.setGalleryCategory('ARCHITECTURE')">Architecture & Grounds</button>
+          <button type="button" class="gallery-filter-btn" data-category="EVENTS" onclick="window.app.setGalleryCategory('EVENTS')">Grand Events</button>
+        </div>
+
+        <div id="gallery-items-grid" class="gallery-masonry">
+          <!-- Populated by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Offers & Packages Section -->
+    <section id="section-offers" class="site-section section-alt">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="section-tag">Exclusive Privileges</span>
+          <h2 class="section-title">Special Offers & <span>Seasonal Escapes</span></h2>
+          <p class="section-subtitle">
+            Enjoy curated perks, complimentary spa credits, and preferential rates for direct website reservations.
+          </p>
+        </div>
+
+        <div id="special-offers-grid" class="offers-grid">
+          <!-- Populated by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews & Ratings Section -->
+    <section id="section-reviews" class="site-section">
+      <div class="container">
+        <div class="text-center mb-4">
+          <span class="section-tag">Guest Accolades</span>
+          <h2 class="section-title">Verified Guest <span>Impressions</span></h2>
+          <p class="section-subtitle">
+            Read authentic reviews from guests and travelers who made DoubleTree Los Angeles Downtown their urban home.
+          </p>
+        </div>
+
+        <!-- Ratings Scorecard Banner -->
+        <div class="ratings-summary-banner">
+          <div class="ratings-score-box">
+            <div class="score-number">4.95</div>
+            <div class="score-stars">★★★★★</div>
+            <span class="score-total-count">Based on 486 Verified Stays</span>
+          </div>
+
+          <div class="rating-categories-bars">
+            <div class="cat-bar-item">
+              <span>Cleanliness & Sanitization</span>
+              <div class="cat-bar-track"><div class="cat-bar-fill" style="width: 100%;"></div></div>
+              <strong>5.0</strong>
+            </div>
+            <div class="cat-bar-item">
+              <span>Staff Courtesy & Butler Care</span>
+              <div class="cat-bar-track"><div class="cat-bar-fill" style="width: 100%;"></div></div>
+              <strong>5.0</strong>
+            </div>
+            <div class="cat-bar-item">
+              <span>Bed Comfort & Linens</span>
+              <div class="cat-bar-track"><div class="cat-bar-fill" style="width: 98%;"></div></div>
+              <strong>4.9</strong>
+            </div>
+            <div class="cat-bar-item">
+              <span>Prime Oceanfront Location</span>
+              <div class="cat-bar-track"><div class="cat-bar-fill" style="width: 96%;"></div></div>
+              <strong>4.8</strong>
+            </div>
+            <div class="cat-bar-item">
+              <span>Spa & Dining Facilities</span>
+              <div class="cat-bar-track"><div class="cat-bar-fill" style="width: 98%;"></div></div>
+              <strong>4.9</strong>
+            </div>
+            <div class="cat-bar-item">
+              <span>Overall Value for Luxury</span>
+              <div class="cat-bar-track"><div class="cat-bar-fill" style="width: 96%;"></div></div>
+              <strong>4.8</strong>
+            </div>
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-gold" onclick="window.app.openWriteReviewModal()">
+              <span>Write a Guest Review</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="reviews-list-grid" class="reviews-cards-grid">
+          <!-- Populated by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Account & Self-Service Portal Section -->
+    <section id="section-account" class="site-section section-alt">
+      <div class="container">
+        <div class="text-center mb-4">
+          <span class="section-tag">Member Portal & Self-Service</span>
+          <h2 class="section-title">Manage Stays & <span>Guest Folios</span></h2>
+          <p class="section-subtitle">
+            View upcoming arrivals, retrieve digital confirmation receipts, or make modifications with ease.
+          </p>
+        </div>
+
+        <div id="account-portal-container">
+          <!-- Populated by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & FAQ Section -->
+    <section id="section-contact" class="site-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="section-tag">Always at Your Service</span>
+          <h2 class="section-title">Contact & <span>Concierge Assistance</span></h2>
+          <p class="section-subtitle">
+            Our 24-hour executive concierge desk is available to fulfill every bespoke request before your arrival.
+          </p>
+        </div>
+
+        <div class="grid-two-cols">
+          <!-- Left: Contact Form -->
+          <div>
+            <div class="card admin-box" style="margin-bottom: 24px;">
+              <h3 style="margin-bottom: 8px;">Direct Guest Inquiry</h3>
+              <p class="text-muted" style="margin-bottom: 24px;">Send a message to our General Manager and Concierge Team.</p>
+
+              <form id="hotel-contact-form">
+                <div class="form-grid two-cols">
+                  <div class="form-group">
+                    <label class="form-label" for="cf-name">Your Full Name *</label>
+                    <input type="text" id="cf-name" class="form-input" required placeholder="Guest Name">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="cf-email">Email Address *</label>
+                    <input type="email" id="cf-email" class="form-input" required placeholder="guest@mail.com">
+                  </div>
+                </div>
+
+                <div class="form-grid two-cols">
+                  <div class="form-group">
+                    <label class="form-label" for="cf-phone">Phone / WhatsApp</label>
+                    <input type="tel" id="cf-phone" class="form-input" placeholder="+1 (213) 555-0199">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="cf-subject">Subject</label>
+                    <select id="cf-subject" class="form-select">
+                      <option value="Suite Reservation">Suite Reservation Inquiry</option>
+                      <option value="Private Dining">Justice Urban Tavern & Dining</option>
+                      <option value="Ballroom Event">Golden State Ballroom & Events</option>
+                      <option value="Valet Parking">Valet Parking & EV Charging</option>
+                      <option value="General Concierge">General DTLA Concierge Request</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="cf-message">Your Message *</label>
+                  <textarea id="cf-message" class="form-textarea" rows="4" required placeholder="Please describe how we can assist you..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-gold btn-block">Transmit Message to Concierge</button>
+              </form>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <h3 style="margin: 32px 0 16px;">Frequently Inquired Information</h3>
+            <div class="faq-accordion">
+              <div class="faq-item open">
+                <div class="faq-item-header">
+                  <h4>What are your check-in and check-out policies?</h4>
+                  <span class="faq-toggle-icon">+</span>
+                </div>
+                <div class="faq-item-body">
+                  Standard check-in begins at 3:00 PM and check-out is at 12:00 PM (noon). Early check-in or late departure can be arranged based on suite availability by requesting it during booking or contacting the concierge.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-item-header">
+                  <h4>What is your reservation cancellation policy?</h4>
+                  <span class="faq-toggle-icon">+</span>
+                </div>
+                <div class="faq-item-body">
+                  All direct web reservations may be cancelled free of charge up to 48 hours prior to your check-in date. Cancellations can be completed instantly inside the "My Stays" portal using your reference number.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-item-header">
+                  <h4>Do you offer private airport transportation?</h4>
+                  <span class="faq-toggle-icon">+</span>
+                </div>
+                <div class="faq-item-body">
+                  Yes. We operate our private fleet of Rolls-Royce Ghost and Mercedes Maybach limousines providing airport express transfers. Rooftop helicopter transit to our certified helipad is also available upon inquiry.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-item-header">
+                  <h4>Can I book a suite as a guest without creating an account?</h4>
+                  <span class="faq-toggle-icon">+</span>
+                </div>
+                <div class="faq-item-body">
+                  Absolutely! Guest checkout is fully enabled. Simply input your contact details during reservation, and an instant booking confirmation reference code will be generated immediately.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Location Card & Interactive Map Canvas -->
+          <div>
+            <div class="contact-info-card">
+              <h3>Hotel Address & Location (DTLA, California)</h3>
+              <p class="text-secondary" style="font-size: 0.95rem; line-height: 1.6;">
+                Commanding a prime vantage in Downtown Los Angeles & historic Little Tokyo, minutes from the Los Angeles Convention Center, Crypto.com Arena, and Walt Disney Concert Hall.
+              </p>
+
+              <div class="contact-info-list">
+                <div class="contact-row">
+                  <span class="contact-icon">📍</span>
+                  <div>
+                    <strong>Physical Address (USA)</strong>
+                    <p class="text-muted">120 S Los Angeles St, Los Angeles, CA 90012, United States</p>
+                  </div>
+                </div>
+
+                <div class="contact-row">
+                  <span class="contact-icon">📞</span>
+                  <div>
+                    <strong>Direct Hotel Telephones</strong>
+                    <p class="text-muted">+1 (213) 629-1200 • +1 (800) HILTONS</p>
+                  </div>
+                </div>
+
+                <div class="contact-row">
+                  <span class="contact-icon">✉️</span>
+                  <div>
+                    <strong>General Manager & Inquiries</strong>
+                    <p class="text-muted"><a href="mailto:doubletreehotel49@gmail.com" style="color:var(--gold-primary); text-decoration:underline;">doubletreehotel49@gmail.com</a></p>
+                  </div>
+                </div>
+
+                <div class="contact-row">
+                  <span class="contact-icon">💬</span>
+                  <div>
+                    <strong>Guest Messaging & Payments</strong>
+                    <p class="text-muted"><span style="color:#ffb86c; font-weight:600;">[WhatsApp Currently Offline]</span> Contact GM via Gmail: <strong>doubletreehotel49@gmail.com</strong></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Map Canvas Frame -->
+              <div class="interactive-map-frame">
+                <div class="map-ambient-bg"></div>
+                <div class="map-pin-target">
+                  <div class="pin-icon">📍</div>
+                  <span>DoubleTree by Hilton Hotel Los Angeles Downtown</span>
+                  <small style="display:block; color: var(--text-muted); margin-top:2px;">Downtown Los Angeles Coordinates: 34.0505° N, 118.2437° W (California, USA)</small>
+                </div>
+              </div>
+
+              <div class="mt-4" style="display: flex; gap: 12px;">
+                <button type="button" class="btn btn-secondary btn-block" onclick="window.open('https://maps.google.com/?q=DoubleTree+by+Hilton+Hotel+Los+Angeles+Downtown+120+S+Los+Angeles+St+CA+90012', '_blank')">
+                  Open in Google Maps (USA) ↗
+                </button>
+              </div>
+            </div>
+
+            <!-- Newsletter Signup Banner -->
+            <div class="card admin-box mt-4" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(14, 22, 38, 0.95) 100%);">
+              <h4>DoubleTree DTLA Insider & Honors Gazette</h4>
+              <p class="text-muted" style="font-size: 0.85rem; margin: 6px 0 16px;">Subscribe to receive exclusive DTLA weekend rates, rooftop Kyoto Garden events, and a 15% welcome voucher.</p>
+              
+              <form onsubmit="event.preventDefault(); window.showToast('Thank you for subscribing! Your 15% voucher code is: DTLA15', 'success'); this.reset();" style="display: flex; gap: 10px;">
+                <input type="email" class="form-input" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-gold" style="white-space: nowrap;">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #04070D; border-top: 1px solid rgba(212, 175, 55, 0.2); padding: 80px 0 30px;">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 60px;">
+          <div>
+            <div class="brand-logo" style="margin-bottom: 16px;">
+              <div class="brand-crest">DT</div>
+              <div class="brand-text">
+                <span class="brand-name">DOUBLETREE BY HILTON</span>
+                <span class="brand-tag">LOS ANGELES DOWNTOWN</span>
+              </div>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; max-width: 320px;">
+              An urban sanctuary in Downtown Los Angeles featuring our tranquil half-acre rooftop Kyoto Gardens, Justice Urban Tavern, and warm hospitality with our signature chocolate chip cookie.
+            </p>
+            <div style="display: flex; gap: 12px; margin-top: 20px;">
+              <span style="font-size: 1.2rem; cursor: pointer;">📷</span>
+              <span style="font-size: 1.2rem; cursor: pointer;">📘</span>
+              <span style="font-size: 1.2rem; cursor: pointer;">💼</span>
+              <span style="font-size: 1.2rem; cursor: pointer;">🐦</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 16px;">Accommodations</h4>
+            <ul style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: var(--text-secondary);">
+              <li><a href="#rooms" onclick="window.app.switchView('rooms')">Kyoto Garden Penthouse Suite</a></li>
+              <li><a href="#rooms" onclick="window.app.switchView('rooms')">DTLA Skyline Executive Suite</a></li>
+              <li><a href="#rooms" onclick="window.app.switchView('rooms')">Corner Skyline King Room</a></li>
+              <li><a href="#rooms" onclick="window.app.switchView('rooms')">Kyoto Garden View Suite</a></li>
+              <li><a href="#rooms" onclick="window.app.switchView('rooms')">Double Queen City View Room</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 16px;">Dining & Grounds</h4>
+            <ul style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: var(--text-secondary);">
+              <li><a href="#dining" onclick="window.app.switchView('dining')">Justice Urban Tavern</a></li>
+              <li><a href="#dining" onclick="window.app.switchView('dining')">Kyoto Rooftop Garden & Bar</a></li>
+              <li><a href="#facilities" onclick="window.app.switchView('facilities')">Precor Fitness Center</a></li>
+              <li><a href="#facilities" onclick="window.app.switchView('facilities')">Half-Acre Rooftop Kyoto Garden</a></li>
+              <li><a href="#facilities" onclick="window.app.switchView('facilities')">Golden State Meeting Pavilion</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 16px;">Guest Portal</h4>
+            <ul style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: var(--text-secondary);">
+              <li><a href="#account" onclick="window.app.switchView('account')">My Reservations</a></li>
+              <li><a href="#account" onclick="window.app.switchView('account')">Guest Folio & Receipt</a></li>
+              <li><a href="#offers" onclick="window.app.switchView('offers')">Promotions & Codes</a></li>
+              <li><a href="#reviews" onclick="window.app.switchView('reviews')">Guest Testimonials</a></li>
+              <li><a href="#" onclick="window.openPolicyModal('cancellation'); return false;">Cancellation Policy</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 16px;">Management</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px;">
+              Authorized staff and management can enter the operations command center:
+            </p>
+            <button type="button" class="btn btn-outline btn-sm btn-block" onclick="window.app.switchView('admin')">
+              <span>⚙️ Hotel Admin Portal</span>
+            </button>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap; gap: 14px;">
+          <div>
+            © 2026 DoubleTree by Hilton Hotel Los Angeles Downtown. All Rights Reserved. Compliant with California Consumer Privacy Act (CCPA) & US Hospitality Standards.
+          </div>
+          <div style="display: flex; gap: 20px;">
+            <a href="#" onclick="window.openPolicyModal('privacy'); return false;">Privacy Policy</a>
+            <a href="#" onclick="window.openPolicyModal('terms'); return false;">Terms & Conditions</a>
+            <a href="#" onclick="window.openPolicyModal('conduct'); return false;">House Rules & Conduct</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button & Popup (WhatsApp Offline - Routes to Gmail) -->
+    <div id="floating-whatsapp-btn" title="Contact DoubleTree DTLA Manager (WhatsApp Offline - Use Gmail)">
+      💬
+    </div>
+
+    <div id="whatsapp-quick-popup">
+      <div class="wa-header">
+        <div>
+          <h4>DoubleTree DTLA Management</h4>
+          <p><span style="color:#ffb86c; font-weight:600;">⚠️ WhatsApp Offline</span> • Contact via Gmail</p>
+        </div>
+        <button type="button" id="whatsapp-popup-close" style="color:#fff; font-size:1.2rem;">✕</button>
+      </div>
+      <div class="wa-body">
+        <div style="background: rgba(255,184,108,0.12); border: 1px solid rgba(255,184,108,0.3); padding: 8px 10px; border-radius: 6px; font-size: 0.8rem; color: #ffb86c; margin-bottom: 10px; line-height: 1.4;">
+          WhatsApp is currently unavailable. Send your reservation & payment inquiry directly to our General Manager via Gmail:
+          <strong style="display:block; color:#fff; margin-top:3px;">doubletreehotel49@gmail.com</strong>
+        </div>
+        <label style="font-size:0.75rem; color:var(--text-muted); display:block; margin-bottom:6px;">Your Inquiry Message:</label>
+        <textarea id="whatsapp-custom-msg" rows="3">Hello DoubleTree Los Angeles Downtown Manager, I would like to inquire regarding room reservation and payment procedure.</textarea>
+        <button type="button" id="whatsapp-send-btn" class="btn btn-sm btn-block mt-3 btn-gold" style="font-weight:700;">
+          ✉️ Send to Manager via Gmail →
+        </button>
+      </div>
+    </div>
+
+  </div> <!-- /#customer-site-view -->
+
+
+  <!-- =========================================================================
+       ADMIN OPERATIONS & HOTEL MANAGEMENT SYSTEM VIEW
+       ========================================================================= -->
+  <div id="admin-portal-view" class="hidden">
+    
+    <!-- Admin Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-crest" style="width:36px; height:36px; font-size:1rem;">DT</div>
+          <div class="brand-text">
+            <span class="brand-name" style="font-size:1rem;">DOUBLETREE OPS</span>
+            <span class="brand-tag">LOS ANGELES DOWNTOWN</span>
+          </div>
+        </div>
+        <span class="admin-role-badge">General Manager</span>
+      </div>
+
+      <nav class="admin-sidebar-nav">
+        <div class="nav-item active" data-section="overview" onclick="window.adminManager.switchSection('overview')">
+          <span class="nav-icon">📊</span>
+          <span>Operations Overview</span>
+        </div>
+        <div class="nav-item" data-section="reservations" onclick="window.adminManager.switchSection('reservations')">
+          <span class="nav-icon">🛎️</span>
+          <span>Reservations & Check-In</span>
+        </div>
+        <div class="nav-item" data-section="rooms" onclick="window.adminManager.switchSection('rooms')">
+          <span class="nav-icon">🚪</span>
+          <span>Suites & Room Inventory</span>
+        </div>
+        <div class="nav-item" data-section="housekeeping" onclick="window.adminManager.switchSection('housekeeping')">
+          <span class="nav-icon">🧹</span>
+          <span>Housekeeping Board</span>
+        </div>
+        <div class="nav-item" data-section="customers" onclick="window.adminManager.switchSection('customers')">
+          <span class="nav-icon">👥</span>
+          <span>Guest Profiles & CRM</span>
+        </div>
+        <div class="nav-item" data-section="billing" onclick="window.adminManager.switchSection('billing')">
+          <span class="nav-icon">🧾</span>
+          <span>Guest Folios & Billing</span>
+        </div>
+        <div class="nav-item" data-section="promotions" onclick="window.adminManager.switchSection('promotions')">
+          <span class="nav-icon">🏷️</span>
+          <span>Promo Codes & Offers</span>
+        </div>
+        <div class="nav-item" data-section="staff" onclick="window.adminManager.switchSection('staff')">
+          <span class="nav-icon">🛡️</span>
+          <span>Staff & Access Roles</span>
+        </div>
+        <div class="nav-item" data-section="content" onclick="window.adminManager.switchSection('content')">
+          <span class="nav-icon">✏️</span>
+          <span>Hotel Content Manager</span>
+        </div>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <button type="button" id="btn-back-to-site" class="btn btn-secondary btn-sm btn-block">
+          <span>← Back to Public Website</span>
+        </button>
+        <button type="button" class="btn btn-outline btn-sm btn-block mt-2" onclick="window.adminManager.logoutAdmin()">
+          <span>🚪 Sign Out (Admin)</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Stage Content Area -->
+    <main class="admin-stage-area">
+      <header class="admin-stage-topbar">
+        <div class="admin-status-indicator">
+          <span class="status-dot-pulse"></span>
+          <span>HMS System Live & Synchronized</span>
+        </div>
+
+        <div class="admin-topbar-right">
+          <button type="button" class="btn btn-gold btn-sm" onclick="window.adminManager.openWalkInModal()">
+            <span>+ Walk-In Booking</span>
+          </button>
+          <div style="font-size:0.85rem; color:var(--text-secondary);">
+            Logged in as: <strong class="text-gold">Marcus Vance (GM)</strong>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="window.adminManager.logoutAdmin()" title="Log out from admin session">
+            <span>🚪 Log Out</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-content-pad" id="admin-main-stage">
+        <!-- Rendered dynamically by js/admin.js -->
+      </div>
+    </main>
+
+  </div> <!-- /#admin-portal-view -->
+
+
+  <!-- =========================================================================
+       BOOKING ENGINE MULTI-STEP MODAL (Step 1-5 Wizard)
+       ========================================================================= -->
+  <div id="booking-modal" class="modal-overlay">
+    <div class="modal-dialog modal-lg animate-scale-up">
+      <div class="modal-header">
+        <div>
+          <span class="section-tag" style="margin-bottom:0; font-size:0.75rem;">Direct VIP Reservation</span>
+          <h3 style="font-size:1.4rem;">DoubleTree by Hilton DTLA Reservation Engine</h3>
+        </div>
+        <button type="button" class="modal-close" onclick="window.bookingEngine.closeBookingModal()">✕</button>
+      </div>
+
+      <!-- Step Progress Indicators -->
+      <div id="booking-step-indicators" class="step-indicators-bar">
+        <!-- Populated by js/booking.js -->
+      </div>
+
+      <!-- Step Content Area -->
+      <div class="modal-body" id="booking-step-content">
+        <!-- Populated by js/booking.js -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       GENERIC MODAL CONTAINER (Room Details, Lightbox, Invoices, Walk-in, Reviews)
+       ========================================================================= -->
+  <div id="generic-modal-container" class="modal-overlay">
+    <!-- Injected dynamically by window.openGenericModal() -->
+  </div>
+
+
+  <!-- =========================================================================
+       TOAST NOTIFICATIONS CONTAINER
+       ========================================================================= -->
+  <div id="toast-container"></div>
+
+
+  <!-- =========================================================================
+       LEGAL POLICY MODAL SCRIPT HELPER
+       ========================================================================= -->
+  <script>
+    window.openPolicyModal = function(policyType) {
+      let title = "Hotel Policy";
+      let content = "";
+
+      if (policyType === "cancellation") {
+        title = "Cancellation & Refund Guarantee";
+        content = `
+          <h4>1. Standard Cancellation Terms</h4>
+          <p>Direct bookings confirmed on our official website enjoy full flexibility. Reservations can be cancelled free of charge up to 48 hours prior to your scheduled check-in time (3:00 PM local property time).</p>
+          <h4 class="mt-3">2. Late Cancellations & No-Show</h4>
+          <p>Cancellations made within 48 hours of check-in, or failure to check in on the scheduled arrival date ("No-Show"), will incur a charge equal to the first night's room rate and applicable hospitality surcharge.</p>
+          <h4 class="mt-3">3. Early Departures</h4>
+          <p>Guests departing prior to the confirmed departure date must notify the Front Desk at least 24 hours in advance to avoid early departure adjustments.</p>
+        `;
+      } else if (policyType === "privacy") {
+        title = "Privacy Policy & Data Protection";
+        content = `
+          <h4>1. Data Protection & Privacy Rights</h4>
+          <p>DoubleTree by Hilton Hotel Los Angeles Downtown strictly adheres to the California Consumer Privacy Act (CCPA) and US privacy regulations. We protect all guest data collected during room bookings and stays.</p>
+          <h4 class="mt-3">2. Information Collection</h4>
+          <p>We collect essential guest details including legal name, email, phone number, and stay preferences solely for the purpose of fulfilling your hospitality stay and Hilton Honors member rewards.</p>
+          <h4 class="mt-3">3. California Privacy Rights</h4>
+          <p>We do not sell personal guest information. Your reservation data is encrypted and accessible exclusively to authorized hospitality and operations staff.</p>
+        `;
+      } else if (policyType === "terms") {
+        title = "Terms & Conditions of Accommodation";
+        content = `
+          <h4>1. Reservation & Occupancy</h4>
+          <p>The lead guest must be at least 18 years of age and present valid government identification upon arrival. Maximum room occupancies must not be exceeded without prior authorization.</p>
+          <h4 class="mt-3">2. Check-In & Check-Out Times</h4>
+          <p>Check-in commences at 3:00 PM. Check-out is at 12:00 PM. Late check-out requests are subject to suite availability and confirmed by the Concierge desk.</p>
+          <h4 class="mt-3">3. Damage and Property Care</h4>
+          <p>Guests agree to treat the suites and palatial amenities with appropriate care. Any damages incurred beyond normal wear will be assessed according to our property replacement schedule.</p>
+        `;
+      } else {
+        title = "House Rules & Guest Conduct";
+        content = `
+          <h4>1. Quiet Hours</h4>
+          <p>To ensure a serene sanctuary for all residents, quiet hours are observed between 11:00 PM and 07:00 AM in all residential corridors and suite balconies.</p>
+          <h4 class="mt-3">2. Smoking & Pets</h4>
+          <p>All interior suites are strictly non-smoking. Designated outdoor garden cabanas are provided for tobacco enjoyment. Guide animals are welcomed with prior notice.</p>
+        `;
+      }
+
+      const html = `
+        <div class="modal-dialog animate-scale-up">
+          <div class="modal-header">
+            <h3>${title}</h3>
+            <button class="modal-close" onclick="window.closeGenericModal()">✕</button>
+          </div>
+          <div class="modal-body">
+            ${content}
+            <div class="modal-footer-actions mt-4 text-right">
+              <button class="btn btn-gold btn-sm" onclick="window.closeGenericModal()">Understood & Agree</button>
+            </div>
+          </div>
+        </div>
+      `;
+      window.openGenericModal(html);
+    };
+  </script>
+
+  <!-- Application Logic Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

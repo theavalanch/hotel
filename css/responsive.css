@@ -1,0 +1,260 @@
+/* ==========================================================================
+   DoubleTree by Hilton Hotel Los Angeles Downtown - Responsive Adaptations
+   Mobile Drawers, Responsive Grids, Touch Targets & Small Screen Layouts
+   ========================================================================== */
+
+/* Mobile Nav Drawer */
+#mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+  background: var(--bg-surface);
+  border-left: 1px solid var(--gold-border);
+  z-index: 10001;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+}
+
+#mobile-nav-drawer.active {
+  right: 0;
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+.mobile-nav-link {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-nav-link:hover {
+  color: var(--gold-primary);
+}
+
+.mobile-nav-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* Large Tablets & Small Laptops (<= 1200px) */
+@media (max-width: 1200px) {
+  .fast-booking-bar {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .bar-btn-col {
+    grid-column: span 3;
+  }
+  .kpi-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .room-rack-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Tablets (<= 992px) */
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 3.2rem;
+  }
+  .main-nav {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: flex;
+  }
+  .grid-two-cols,
+  .dining-experience-banner,
+  .ratings-summary-banner,
+  .auth-grid-two {
+    grid-template-columns: 1fr;
+  }
+  .facilities-grid,
+  .offers-grid,
+  .gallery-masonry,
+  .dishes-grid,
+  .reviews-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .room-list-card {
+    grid-template-columns: 1fr;
+  }
+  .room-list-media {
+    min-height: 240px;
+    height: 240px;
+  }
+  .ratings-score-box {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 0;
+    padding-bottom: 24px;
+  }
+  .admin-sidebar {
+    width: 220px;
+  }
+  .hk-kanban-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile Devices (<= 768px) */
+@media (max-width: 768px) {
+  .site-header {
+    height: 72px;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.05rem;
+  }
+  .fast-booking-bar {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+  .bar-btn-col {
+    grid-column: span 1;
+  }
+  .facilities-grid,
+  .offers-grid,
+  .gallery-masonry,
+  .dishes-grid,
+  .reviews-cards-grid,
+  .rating-categories-bars,
+  .kpi-grid,
+  .room-rack-grid,
+  .form-grid.two-cols,
+  .form-grid.three-cols {
+    grid-template-columns: 1fr;
+  }
+  .section-title {
+    font-size: 2.1rem;
+  }
+  .site-section {
+    padding: 60px 0;
+  }
+  .suite-select-card {
+    grid-template-columns: 1fr;
+  }
+  .suite-select-thumb {
+    height: 180px;
+  }
+  .modal-body {
+    padding: 20px;
+  }
+  .step-indicators-bar {
+    overflow-x: auto;
+    padding: 12px 16px;
+  }
+  .step-label {
+    display: none;
+  }
+  .conf-grid {
+    grid-template-columns: 1fr;
+  }
+  .conf-ref-id {
+    font-size: 1.8rem;
+  }
+
+  /* Admin mobile adjustments */
+  #admin-portal-view {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+  .admin-sidebar-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+  }
+  .admin-sidebar-nav .nav-item {
+    white-space: nowrap;
+    border-left: none !important;
+    border-bottom: 2px solid transparent;
+  }
+  .admin-sidebar-nav .nav-item.active {
+    border-bottom-color: var(--gold-primary);
+  }
+  .admin-content-pad {
+    padding: 20px;
+  }
+  .admin-topbar-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .admin-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-box {
+    width: 100%;
+  }
+  .filter-pills {
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+}
+
+/* Small Phones (<= 480px) */
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 0.95rem;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+  .btn-large {
+    padding: 14px 24px;
+    font-size: 0.95rem;
+  }
+  .btn-gold, .btn-primary, .btn-secondary {
+    width: 100%;
+  }
+  .admin-switch-badge span:last-child {
+    display: none;
+  }
+  #floating-whatsapp-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  #whatsapp-quick-popup {
+    right: 14px;
+    left: 14px;
+    width: auto;
+  }
+}
