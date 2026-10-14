@@ -59,9 +59,9 @@
             </select>
           </div>
 
-          <!-- Account / My Bookings -->
-          <button type="button" class="btn btn-secondary btn-sm" data-nav-target="account">
-            <span>👤 Honors / My Stays</span>
+          <!-- User Account / Sign In / Sign Up -->
+          <button type="button" id="btn-user-auth" class="btn btn-secondary btn-sm" onclick="window.app.openUserAuthModal()">
+            <span id="user-auth-btn-label">👤 Sign In / Join Honors</span>
           </button>
 
           <!-- Book Now CTA -->
@@ -103,7 +103,7 @@
         <a href="#offers" class="mobile-nav-link" data-view="offers">Special Offers <span>→</span></a>
         <a href="#reviews" class="mobile-nav-link" data-view="reviews">Guest Reviews <span>→</span></a>
         <a href="#contact" class="mobile-nav-link" data-view="contact">Contact & Location (USA) <span>→</span></a>
-        <a href="#account" class="mobile-nav-link" data-view="account">My Stays / Account <span>→</span></a>
+        <a href="javascript:void(0)" class="mobile-nav-link" onclick="window.app.openUserAuthModal(); window.app.toggleMobileMenu(false);"><span id="mobile-user-auth-label">👤 Sign In / Join Hilton Honors</span> <span>→</span></a>
       </div>
       <div class="mobile-nav-footer">
         <button type="button" class="btn btn-gold btn-block" onclick="window.bookingEngine.openBookingModal()">Reserve a Room</button>

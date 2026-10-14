@@ -396,51 +396,144 @@ class HotelState {
     return promo || null;
   }
 
-  // Customer Account Auth
-  loginCustomer(email, password) {
-    if (this.isUserDeactivated(email)) {
-      return { 
-        error: "ACCOUNT_DEACTIVATED", 
-        message: "Your account has been deactivated by Hotel Administration. Please contact our General Manager at doubletreehotel49@gmail.com." 
+  // -------------------------------------------------------------
+  // Customer / User Authentication & Registration (Hilton Honors)
+  // -------------------------------------------------------------
+  getCurrentUser() {
+    if (!this.currentUser) {
+      const stored = localStorage.getItem("DOUBLETREE_CURRENT_USER");
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          if (this.isUserDeactivated(parsed.email)) {
+            this.logoutCustomer();
+            return null;
+          }
+          this.currentUser = parsed;
+        } catch (e) {
+          this.currentUser = null;
+        }
+      }
+    }
+    return this.currentUser;
+  }
+
+  registerCustomer({ fullName, email, phone, password, country = "United States" }) {
+    if (!email || !fullName || !password) {
+      return {
+        error: "VALIDATION_ERROR",
+        message: "Please fill in all required fields (Full Name, Email, and Password)."
       };
     }
 
-    // Register or get user profile
-    const existingAcc = this.getUserAccount(email);
-    const user = {
-      id: existingAcc ? existingAcc.id : "usr-" + email.replace(/[^a-zA-Z0-9]/g, ""),
-      email: email,
-      fullName: existingAcc ? existingAcc.fullName : email.split("@")[0].replace(".", " ").replace(/\b\w/g, l => l.toUpperCase()),
-      phone: existingAcc ? existingAcc.phone : "+1 (213) 555-0199",
-      country: existingAcc ? existingAcc.country : "United States",
-      memberTier: existingAcc ? existingAcc.memberTier : "Hilton Honors Diamond Member",
-      memberSince: "2024",
-      preferences: {
-        highFloor: true,
-        extraPillows: true,
-        quietRoom: true,
-        dietary: "Gluten-Friendly"
-      }
+    const cleanEmail = email.trim().toLowerCase();
+    const existing = this.getUserAccount(cleanEmail);
+    if (existing) {
+      return {
+        error: "ACCOUNT_EXISTS",
+        message: `An account with ${cleanEmail} already exists. Please sign in instead.`
+      };
+    }
+
+    if (password.length < 6) {
+      return {
+        error: "WEAK_PASSWORD",
+        message: "Password must be at least 6 characters long."
+      };
+    }
+
+    const honorsNum = "HH-" + Math.floor(10000000 + Math.random() * 90000000);
+    const newAccount = {
+      id: "usr-" + Date.now() + "-" + Math.floor(Math.random() * 1000),
+      email: cleanEmail,
+      fullName: fullName.trim(),
+      phone: phone ? phone.trim() : "+1 (213) 555-0199",
+      password: password,
+      country: country,
+      honorsNumber: honorsNum,
+      memberTier: "Hilton Honors Member",
+      points: 1000, // 1,000 welcome bonus points
+      status: "active", // "active" or "deactivated"
+      totalStays: 0,
+      totalSpend: 0,
+      memberSince: new Date().getFullYear().toString(),
+      createdAt: new Date().toISOString()
     };
 
-    this.registerOrUpdateUserAccount({
-      email: user.email,
-      fullName: user.fullName,
-      phone: user.phone,
-      country: user.country,
-      memberTier: user.memberTier
-    });
+    if (!this.data.userAccounts) this.data.userAccounts = [];
+    this.data.userAccounts.push(newAccount);
 
-    this.currentUser = user;
-    localStorage.setItem("DOUBLETREE_CURRENT_USER", JSON.stringify(user));
-    this.notify("auth:change", user);
-    return user;
+    this.currentUser = newAccount;
+    localStorage.setItem("DOUBLETREE_CURRENT_USER", JSON.stringify(newAccount));
+    this.notify("auth:change", newAccount);
+    this.notify("users:change", newAccount);
+
+    return {
+      success: true,
+      user: newAccount,
+      message: `Welcome to Hilton Honors, ${newAccount.fullName}! You have received 1,000 welcome bonus points.`
+    };
+  }
+
+  loginCustomer(email, password) {
+    if (!email) {
+      return { error: "MISSING_FIELDS", message: "Please enter your email address." };
+    }
+
+    const cleanEmail = email.trim().toLowerCase();
+
+    if (this.isUserDeactivated(cleanEmail)) {
+      return { 
+        error: "ACCOUNT_DEACTIVATED", 
+        message: "Your account has been deactivated by Hotel Administration. Please contact our General Manager directly at doubletreehotel49@gmail.com for assistance." 
+      };
+    }
+
+    const acc = this.getUserAccount(cleanEmail);
+    if (!acc) {
+      return {
+        error: "NOT_FOUND",
+        message: `No account found for "${cleanEmail}". Please check your email or click "Join Hilton Honors" to create a new account.`
+      };
+    }
+
+    // Verify password if account has a password
+    if (acc.password && password && acc.password !== password) {
+      return {
+        error: "INVALID_CREDENTIALS",
+        message: "Incorrect password. Please verify your credentials and try again."
+      };
+    }
+
+    // Ensure Honors Number exists
+    if (!acc.honorsNumber) {
+      acc.honorsNumber = "HH-" + Math.floor(10000000 + Math.random() * 90000000);
+    }
+    if (acc.points === undefined) {
+      acc.points = 1000;
+    }
+
+    this.currentUser = acc;
+    localStorage.setItem("DOUBLETREE_CURRENT_USER", JSON.stringify(acc));
+    this.notify("auth:change", acc);
+
+    return {
+      success: true,
+      user: acc,
+      message: `Welcome back, ${acc.fullName}!`
+    };
   }
 
   logoutCustomer() {
     this.currentUser = null;
     localStorage.removeItem("DOUBLETREE_CURRENT_USER");
     this.notify("auth:change", null);
+  }
+
+  getUserBookings(email) {
+    if (!email) return [];
+    const clean = email.trim().toLowerCase();
+    return (this.data.reservations || []).filter(r => (r.customerEmail || "").toLowerCase() === clean);
   }
 
   // -------------------------------------------------------------

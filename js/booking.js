@@ -81,8 +81,8 @@ class BookingEngine {
     }
 
     // Prefill form if customer is logged in
-    if (window.hotelState.currentUser) {
-      const u = window.hotelState.currentUser;
+    const u = window.hotelState.getCurrentUser();
+    if (u) {
       this.bookingDraft.guestName = u.fullName || "";
       this.bookingDraft.email = u.email || "";
       this.bookingDraft.phone = u.phone || "";
@@ -548,6 +548,20 @@ class BookingEngine {
             <p>${this.bookingDraft.nights} Nights • ${this.bookingDraft.adults} Adults${this.bookingDraft.children ? `, ${this.bookingDraft.children} Children` : ''} • ${window.hotelState.formatPrice(selectedRoom?.basePrice)} / night</p>
           </div>
         </div>
+
+        ${window.hotelState.getCurrentUser() ? `
+          <div class="user-autofill-banner mb-3">
+            <span class="icon">👑</span>
+            <div>
+              <strong>Hilton Honors Member: ${window.hotelState.getCurrentUser().fullName}</strong>
+              <span style="font-size:0.8rem;color:#cbd5e1;display:block;">Honors #${window.hotelState.getCurrentUser().honorsNumber || 'Member'} • Contact details pre-filled.</span>
+            </div>
+          </div>
+        ` : `
+          <div class="user-login-prompt-banner mb-3" onclick="window.app.openUserAuthModal('signin')">
+            <span>✨ Have a Hilton Honors account? <strong class="text-gold">Sign In / Join Hilton Honors</strong> to auto-fill details & earn 1,000 Honors bonus points.</span>
+          </div>
+        `}
 
         <div class="form-grid two-cols">
           <div class="form-group">

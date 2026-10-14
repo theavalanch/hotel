@@ -82,12 +82,19 @@ class MainApp {
     this.bindCurrencySelector();
     this.bindWhatsAppLauncher();
     this.bindMobileMenu();
+    this.updateUserAuthUI();
 
     // Listen for state changes
     window.hotelState.subscribe("*", () => {
       this.renderFeaturedRooms();
       this.renderAllRoomsList();
       this.renderReviewsList();
+      this.renderAccountPortal();
+      this.updateUserAuthUI();
+    });
+
+    window.hotelState.subscribe("auth:change", () => {
+      this.updateUserAuthUI();
       this.renderAccountPortal();
     });
 
@@ -781,13 +788,267 @@ class MainApp {
   }
 
   /* -------------------------------------------------------------
+   * User Authentication & Hilton Honors Header Controls
+   * ------------------------------------------------------------- */
+  updateUserAuthUI() {
+    const user = window.hotelState.getCurrentUser();
+    const btnLabel = document.getElementById("user-auth-btn-label");
+    const mobileLabel = document.getElementById("mobile-user-auth-label");
+
+    if (user) {
+      const firstName = (user.fullName || "").split(" ")[0] || "Member";
+      const tierLabel = user.memberTier ? user.memberTier.replace("Hilton Honors ", "") : "Honors";
+      if (btnLabel) btnLabel.innerHTML = `👤 ${firstName} (${tierLabel})`;
+      if (mobileLabel) mobileLabel.innerHTML = `👤 ${user.fullName} (${tierLabel})`;
+    } else {
+      if (btnLabel) btnLabel.innerHTML = `👤 Sign In / Join Honors`;
+      if (mobileLabel) mobileLabel.innerHTML = `👤 Sign In / Join Hilton Honors`;
+    }
+  }
+
+  openUserAuthModal(initialTab = null) {
+    const user = window.hotelState.getCurrentUser();
+    let currentTab = initialTab || (user ? "profile" : "signin");
+
+    const renderModalContent = (tab) => {
+      currentTab = tab;
+      const currentUser = window.hotelState.getCurrentUser();
+      const userBookings = currentUser ? window.hotelState.getUserBookings(currentUser.email) : [];
+
+      let tabContent = "";
+      if (tab === "signin") {
+        tabContent = `
+          <div class="auth-modal-tab-pane animate-fade-in">
+            <div class="auth-pane-header text-center mb-3">
+              <div class="brand-crest mx-auto mb-2" style="width:48px;height:48px;font-size:1.1rem;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#c5a059,#93702e);border-radius:50%;color:#0b1325;font-weight:700;">DT</div>
+              <h4>Sign In to Hilton Honors</h4>
+              <p class="text-muted" style="font-size:0.9rem;">Access exclusive member rates, Kyoto Garden tour privileges, and manage your stays.</p>
+            </div>
+
+            <div id="auth-signin-error" class="auth-error-banner hidden mb-3"></div>
+
+            <form id="auth-signin-form" onsubmit="window.app.handleUserSignInModal(event)">
+              <div class="form-group mb-3">
+                <label class="form-label">Email Address *</label>
+                <input type="email" id="modal-signin-email" class="form-input" placeholder="e.g. name@domain.com" required autocomplete="email">
+              </div>
+              <div class="form-group mb-3">
+                <label class="form-label">Password *</label>
+                <input type="password" id="modal-signin-password" class="form-input" placeholder="Enter your password" required autocomplete="current-password">
+              </div>
+              <button type="submit" class="btn btn-gold btn-block mb-3" style="width:100%;padding:0.75rem;font-size:1rem;">Sign In to Account</button>
+            </form>
+
+            <div class="auth-switch-prompt text-center mt-3" style="border-top:1px solid rgba(255,255,255,0.1);padding-top:1rem;">
+              <span class="text-muted" style="font-size:0.9rem;">Don't have an account yet?</span>
+              <a href="javascript:void(0)" class="text-gold font-weight-bold ml-1" onclick="window.app.switchAuthModalTab('signup')">Join Hilton Honors (Free Sign Up) →</a>
+            </div>
+          </div>
+        `;
+      } else if (tab === "signup") {
+        tabContent = `
+          <div class="auth-modal-tab-pane animate-fade-in">
+            <div class="auth-pane-header text-center mb-3">
+              <div class="brand-crest mx-auto mb-2" style="width:48px;height:48px;font-size:1.1rem;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#c5a059,#93702e);border-radius:50%;color:#0b1325;font-weight:700;">DT</div>
+              <h4>Join Hilton Honors Today</h4>
+              <p class="text-muted" style="font-size:0.9rem;">Instant elite benefits and guaranteed best rates in Downtown Los Angeles.</p>
+            </div>
+
+            <div class="honors-welcome-perks mb-3" style="background:rgba(197,160,89,0.12);border:1px solid rgba(197,160,89,0.3);border-radius:8px;padding:0.75rem 1rem;">
+              <div style="font-weight:600;color:#e6ca85;font-size:0.85rem;margin-bottom:0.35rem;">✨ Complimentary Member Privileges:</div>
+              <ul style="font-size:0.8rem;color:#cbd5e1;padding-left:1.2rem;margin:0;">
+                <li><strong>1,000 Welcome Bonus Points</strong> credited instantly</li>
+                <li>Exclusive Hilton Honors rates on all luxury suites</li>
+                <li>Free premium high-speed Wi-Fi across the property</li>
+                <li>Priority morning access to the Kyoto Rooftop Gardens</li>
+              </ul>
+            </div>
+
+            <div id="auth-signup-error" class="auth-error-banner hidden mb-3"></div>
+
+            <form id="auth-signup-form" onsubmit="window.app.handleUserSignUpModal(event)">
+              <div class="form-group mb-2">
+                <label class="form-label">Full Legal Name *</label>
+                <input type="text" id="modal-signup-name" class="form-input" placeholder="e.g. Eleanor Vance" required autocomplete="name">
+              </div>
+              <div class="form-group mb-2">
+                <label class="form-label">Email Address *</label>
+                <input type="email" id="modal-signup-email" class="form-input" placeholder="e.g. eleanor@luxury.com" required autocomplete="email">
+              </div>
+              <div class="form-group mb-2">
+                <label class="form-label">Phone / WhatsApp Number</label>
+                <input type="tel" id="modal-signup-phone" class="form-input" placeholder="+1 (213) 555-0199" autocomplete="tel">
+              </div>
+              <div class="form-group mb-3">
+                <label class="form-label">Create Password * (min 6 characters)</label>
+                <input type="password" id="modal-signup-password" class="form-input" placeholder="Create a secure password" minlength="6" required autocomplete="new-password">
+              </div>
+              <button type="submit" class="btn btn-gold btn-block mb-3" style="width:100%;padding:0.75rem;font-size:1rem;">Create Account & Join Honors</button>
+            </form>
+
+            <div class="auth-switch-prompt text-center mt-2" style="border-top:1px solid rgba(255,255,255,0.1);padding-top:0.75rem;">
+              <span class="text-muted" style="font-size:0.9rem;">Already have an account?</span>
+              <a href="javascript:void(0)" class="text-gold font-weight-bold ml-1" onclick="window.app.switchAuthModalTab('signin')">Sign In to Honors →</a>
+            </div>
+          </div>
+        `;
+      } else if (tab === "profile") {
+        if (!currentUser) {
+          renderModalContent("signin");
+          return;
+        }
+        tabContent = `
+          <div class="auth-modal-tab-pane animate-fade-in">
+            <div class="user-profile-header-card mb-3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(197,160,89,0.3);border-radius:10px;padding:1.25rem;">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+                <div style="display:flex;align-items:center;gap:0.85rem;">
+                  <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#c5a059,#93702e);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#0b1325;font-weight:700;">
+                    ${currentUser.fullName.charAt(0).toUpperCase()}
+                  </div>
+                  <div>
+                    <h4 style="margin:0;font-size:1.2rem;">${currentUser.fullName}</h4>
+                    <span style="display:inline-block;background:#c5a059;color:#0b1325;font-size:0.75rem;font-weight:700;padding:2px 8px;border-radius:12px;text-transform:uppercase;">${currentUser.memberTier}</span>
+                    <span style="font-size:0.8rem;color:#94a3b8;margin-left:6px;">Honors #${currentUser.honorsNumber || 'Member'}</span>
+                  </div>
+                </div>
+                <div>
+                  <button class="btn btn-outline btn-sm" onclick="window.app.handleUserSignOut()">Sign Out 🚪</button>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.75rem;margin-top:1rem;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.75rem;font-size:0.85rem;">
+                <div><span class="text-muted">Email:</span> <br><strong>${currentUser.email}</strong></div>
+                <div><span class="text-muted">Phone:</span> <br><strong>${currentUser.phone}</strong></div>
+                <div><span class="text-muted">Honors Points:</span> <br><strong style="color:#e6ca85;">${(currentUser.points || 1000).toLocaleString()} pts</strong></div>
+                <div><span class="text-muted">Account Status:</span> <br><span class="badge ${currentUser.status === 'deactivated' ? 'badge-danger' : 'badge-success'}">${currentUser.status === 'deactivated' ? 'Deactivated' : 'Active'}</span></div>
+              </div>
+            </div>
+
+            <div class="user-bookings-section">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                <h5 style="margin:0;font-size:1rem;">Your Stays & Reservations (${userBookings.length})</h5>
+                <button class="btn btn-gold btn-sm" onclick="window.closeGenericModal(); window.bookingEngine.openBookingModal();">Book a New Stay +</button>
+              </div>
+
+              ${userBookings.length === 0 ? `
+                <div style="background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.15);border-radius:8px;padding:2rem;text-align:center;">
+                  <div style="font-size:2rem;margin-bottom:0.5rem;">🏨</div>
+                  <h5 style="margin:0 0 0.25rem 0;">No Stays Booked Yet</h5>
+                  <p class="text-muted" style="font-size:0.85rem;max-width:320px;margin:0 auto 1rem auto;">Ready to experience Japanese gardens and luxury suites in downtown Los Angeles?</p>
+                  <button class="btn btn-gold btn-sm" onclick="window.closeGenericModal(); window.bookingEngine.openBookingModal();">Explore Available Suites</button>
+                </div>
+              ` : `
+                <div style="display:flex;flex-direction:column;gap:0.75rem;max-height:280px;overflow-y:auto;padding-right:4px;">
+                  ${userBookings.map(bk => `
+                    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0.85rem;">
+                      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.35rem;">
+                        <span style="font-weight:700;color:#e6ca85;font-size:0.9rem;">${bk.id}</span>
+                        <span style="font-size:0.75rem;padding:2px 8px;border-radius:10px;background:${bk.paymentStatus === 'Paid' ? '#10b981' : '#f59e0b'};color:#000;font-weight:600;">
+                          ${bk.paymentStatus || 'Payment Follow-up (Gmail)'}
+                        </span>
+                      </div>
+                      <div style="font-size:0.85rem;color:#e2e8f0;margin-bottom:0.25rem;">${bk.roomTypeName} • ${bk.checkIn} to ${bk.checkOut} (${bk.nights} nights)</div>
+                      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.05);padding-top:0.35rem;margin-top:0.35rem;">
+                        <span class="text-muted">Total: <strong>${window.hotelState.formatPrice(bk.totalAmount)}</strong></span>
+                        <div style="display:flex;gap:0.5rem;">
+                          <button class="btn btn-secondary btn-sm" style="padding:2px 8px;font-size:0.75rem;" onclick="window.printReservationReceipt('${bk.id}')">View Folio</button>
+                          <a class="btn btn-gold btn-sm" style="padding:2px 8px;font-size:0.75rem;text-decoration:none;" href="https://mail.google.com/mail/?view=cm&fs=1&to=doubletreehotel49@gmail.com&su=Payment%20Procedure%20for%20Booking%20${bk.id}" target="_blank">Contact Manager</a>
+                        </div>
+                      </div>
+                    </div>
+                  `).join("")}
+                </div>
+              `}
+            </div>
+          </div>
+        `;
+      }
+
+      const modalHtml = `
+        <div class="modal-dialog auth-modal-dialog animate-scale-up" style="max-width:540px;width:95%;">
+          <div class="modal-header" style="border-bottom:none;padding-bottom:0.5rem;">
+            <div class="auth-modal-nav-tabs" style="display:flex;gap:0.5rem;width:100%;">
+              <button class="auth-tab-btn ${currentTab === 'signin' ? 'active' : ''}" onclick="window.app.switchAuthModalTab('signin')">Sign In</button>
+              <button class="auth-tab-btn ${currentTab === 'signup' ? 'active' : ''}" onclick="window.app.switchAuthModalTab('signup')">Join Honors</button>
+              ${currentUser ? `<button class="auth-tab-btn ${currentTab === 'profile' ? 'active' : ''}" onclick="window.app.switchAuthModalTab('profile')">👤 My Stays</button>` : ''}
+            </div>
+            <button class="modal-close" onclick="window.closeGenericModal()">✕</button>
+          </div>
+          <div class="modal-body" style="padding-top:0.5rem;">
+            ${tabContent}
+          </div>
+        </div>
+      `;
+      window.openGenericModal(modalHtml);
+    };
+
+    renderModalContent(currentTab);
+  }
+
+  switchAuthModalTab(tab) {
+    this.openUserAuthModal(tab);
+  }
+
+  handleUserSignInModal(e) {
+    e.preventDefault();
+    const email = document.getElementById("modal-signin-email")?.value.trim();
+    const pass = document.getElementById("modal-signin-password")?.value;
+    const errBox = document.getElementById("auth-signin-error");
+
+    const res = window.hotelState.loginCustomer(email, pass);
+    if (res && res.error) {
+      if (errBox) {
+        errBox.innerHTML = `⚠️ ${res.message}`;
+        errBox.classList.remove("hidden");
+      } else {
+        window.showToast(res.message, "error");
+      }
+      return;
+    }
+
+    window.showToast(res.message || "Signed in successfully!", "success");
+    this.updateUserAuthUI();
+    this.openUserAuthModal("profile");
+  }
+
+  handleUserSignUpModal(e) {
+    e.preventDefault();
+    const name = document.getElementById("modal-signup-name")?.value.trim();
+    const email = document.getElementById("modal-signup-email")?.value.trim();
+    const phone = document.getElementById("modal-signup-phone")?.value.trim();
+    const pass = document.getElementById("modal-signup-password")?.value;
+    const errBox = document.getElementById("auth-signup-error");
+
+    const res = window.hotelState.registerCustomer({ fullName: name, email, phone, password: pass });
+    if (res && res.error) {
+      if (errBox) {
+        errBox.innerHTML = `⚠️ ${res.message}`;
+        errBox.classList.remove("hidden");
+      } else {
+        window.showToast(res.message, "error");
+      }
+      return;
+    }
+
+    window.showToast(res.message || "Account created successfully!", "success");
+    this.updateUserAuthUI();
+    this.openUserAuthModal("profile");
+  }
+
+  handleUserSignOut() {
+    window.hotelState.logoutCustomer();
+    this.updateUserAuthUI();
+    window.showToast("Signed out of Hilton Honors.", "info");
+    this.openUserAuthModal("signin");
+  }
+
+  /* -------------------------------------------------------------
    * Customer Account Portal & Self-Service
    * ------------------------------------------------------------- */
   renderAccountPortal() {
     const container = document.getElementById("account-portal-container");
     if (!container) return;
 
-    const user = window.hotelState.currentUser;
+    const user = window.hotelState.getCurrentUser();
     const allRes = window.hotelState.getReservations();
 
     if (!user) {
@@ -807,13 +1068,16 @@ class MainApp {
               <form id="member-login-form" onsubmit="window.handleMemberLogin(event)">
                 <div class="form-group">
                   <label class="form-label">Email Address</label>
-                  <input type="email" id="login-email" class="form-input" placeholder="guest@domain.com" required value="a.richardson@californiadesign.com">
+                  <input type="email" id="login-email" class="form-input" placeholder="guest@domain.com" required>
                 </div>
                 <div class="form-group">
                   <label class="form-label">Password</label>
-                  <input type="password" id="login-pass" class="form-input" value="••••••••" required>
+                  <input type="password" id="login-pass" class="form-input" placeholder="Your password" required>
                 </div>
                 <button type="submit" class="btn btn-gold btn-block mt-3">Log In to Honors Portal</button>
+                <div class="text-center mt-2">
+                  <a href="javascript:void(0)" class="text-gold" style="font-size:0.85rem;" onclick="window.app.openUserAuthModal('signup')">New guest? Create account & Join Honors →</a>
+                </div>
               </form>
             </div>
 
@@ -824,11 +1088,11 @@ class MainApp {
               <form id="lookup-booking-form" onsubmit="window.handleGuestLookup(event)">
                 <div class="form-group">
                   <label class="form-label">Booking Reference Number</label>
-                  <input type="text" id="lookup-ref" class="form-input" placeholder="e.g. DTLA-2026-8942" required value="DTLA-2026-8942">
+                  <input type="text" id="lookup-ref" class="form-input" placeholder="e.g. DTLA-2026-8942" required>
                 </div>
                 <div class="form-group">
                   <label class="form-label">Lead Guest Email</label>
-                  <input type="email" id="lookup-email" class="form-input" placeholder="Email on reservation" required value="a.richardson@californiadesign.com">
+                  <input type="email" id="lookup-email" class="form-input" placeholder="Email on reservation" required>
                 </div>
                 <button type="submit" class="btn btn-secondary btn-block mt-3">Locate Reservation</button>
               </form>
@@ -840,7 +1104,7 @@ class MainApp {
     }
 
     // Logged in user view
-    const userRes = allRes.filter(r => r.email.toLowerCase() === user.email.toLowerCase());
+    const userRes = window.hotelState.getUserBookings(user.email);
 
     container.innerHTML = `
       <div class="account-dashboard-view animate-fade-in">
