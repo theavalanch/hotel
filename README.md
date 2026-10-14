@@ -4,6 +4,19 @@ A full-featured premier hotel web application and integrated hotel operations ma
 
 ---
 
+## 🌐 Live Public Domains (Active Worldwide)
+
+| Channel | URL |
+|---|---|
+| **Primary Domain (Short & Clean)** | **[https://doubletree-dtla.surge.sh/](https://doubletree-dtla.surge.sh/)** |
+| **Full Branded Domain** | **[https://doubletree-losangeles-hotel.surge.sh/](https://doubletree-losangeles-hotel.surge.sh/)** |
+| **Admin Portal (Direct)** | **[https://doubletree-dtla.surge.sh/#admin](https://doubletree-dtla.surge.sh/#admin)** |
+| **GitHub Source Repository** | **[https://github.com/theavalanch/hotel](https://github.com/theavalanch/hotel)** |
+
+> **Notice:** The live domain links above do NOT contain your GitHub username (`theavalanch`), providing a completely clean and branded public link for your guests and hotel management.
+
+---
+
 ## 🌟 Key Features Overview
 
 ### 1. Customer-Facing Hotel Website
