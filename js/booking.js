@@ -861,16 +861,16 @@ ${res.guestName}`;
             </button>
           </div>
 
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="${gmailWebUrl}" target="_blank" class="btn btn-gold" style="flex: 1; min-width: 220px; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700;">
+          <div class="conf-email-buttons-row" style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="${gmailWebUrl}" target="_blank" class="btn btn-gold" style="flex: 1; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700;">
               <span>✉️ Open in Gmail Web</span>
               <span>↗</span>
             </a>
-            <a href="${mailtoUrl}" class="btn btn-secondary" style="flex: 1; min-width: 200px; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+            <a href="${mailtoUrl}" class="btn btn-secondary" style="flex: 1; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700;">
               <span>📧 Send via Email App</span>
               <span>↗</span>
             </a>
-            <button type="button" class="btn btn-outline" style="min-width: 180px;" onclick="window.bookingEngine.copyBookingDetails('${res.id}')">
+            <button type="button" class="btn btn-outline" style="flex: 1; font-weight: 700;" onclick="window.bookingEngine.copyBookingDetails('${res.id}')">
               <span>📋 Copy Booking Details</span>
             </button>
           </div>

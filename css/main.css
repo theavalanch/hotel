@@ -89,6 +89,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+button, a, input, select, textarea, label {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body.modal-open,
 body.menu-open {
   overflow: hidden;

@@ -174,27 +174,30 @@ class MainApp {
 
   toggleMobileMenu(forceState = null) {
     const navDrawer = document.getElementById("mobile-nav-drawer");
+    const backdrop = document.getElementById("mobile-nav-backdrop");
     if (!navDrawer) return;
-    if (forceState !== null) {
-      if (forceState) {
-        navDrawer.classList.add("active");
-        document.body.classList.add("menu-open");
-      } else {
-        navDrawer.classList.remove("active");
-        document.body.classList.remove("menu-open");
-      }
+
+    const isOpen = forceState !== null ? forceState : !navDrawer.classList.contains("active");
+
+    if (isOpen) {
+      navDrawer.classList.add("active");
+      backdrop?.classList.add("active");
+      document.body.classList.add("menu-open");
     } else {
-      navDrawer.classList.toggle("active");
-      document.body.classList.toggle("menu-open");
+      navDrawer.classList.remove("active");
+      backdrop?.classList.remove("active");
+      document.body.classList.remove("menu-open");
     }
   }
 
   bindMobileMenu() {
     const hamburger = document.getElementById("mobile-menu-toggle");
     const closeBtn = document.getElementById("mobile-menu-close");
+    const backdrop = document.getElementById("mobile-nav-backdrop");
 
     hamburger?.addEventListener("click", () => this.toggleMobileMenu());
     closeBtn?.addEventListener("click", () => this.toggleMobileMenu(false));
+    backdrop?.addEventListener("click", () => this.toggleMobileMenu(false));
 
     document.querySelectorAll(".mobile-nav-link").forEach(link => {
       link.addEventListener("click", () => {
